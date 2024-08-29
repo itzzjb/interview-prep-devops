@@ -42,6 +42,6 @@ jobs:
       - name: Output the Output
         run: echo "The output is ${{ needs.test.outputs.hello }}"
       - name: Echo Env
-        run: echo $env.ENV
+        run: echo $ENV
       - name: Echo Secret
-        run: echo $env.SEC
+        run: echo $SEC
