@@ -7,6 +7,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      hello: ${{ steps.hello.outputs.hello }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,6 +23,9 @@ jobs:
         with:
           name: Hello
           path: ./Hello.txt
+      - name: Creating an Output
+        id: hello
+        run: echo "Hello, World!" >> $GITHUB_OUTPUT
   echo:
     runs-on: ubuntu-latest
     needs: test
@@ -31,3 +36,5 @@ jobs:
           name: Hello
       - name: Print Hello
         run: cat Hello.txt
+      - name: Output the Output
+        run: echo "The output is ${{ needs.test.outputs.hello }}"
