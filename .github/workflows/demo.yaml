@@ -43,11 +43,11 @@ jobs:
         run: echo "The output is ${{ needs.test.outputs.hello }}"
       - name: Echo Env
         run: |
-          echo {{ env.ENV }} &&
+          echo ${{ env.ENV }} &&
           echo $ENV
 
       - name: Echo Secret
         run: |
-          echo {{ secrets.DEMO }} &&
-          echo {{ env.SEC }} &&
+          echo ${{ secrets.DEMO }} &&
+          echo ${{ env.SEC }} &&
           echo $SEC
