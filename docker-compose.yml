@@ -1,0 +1,20 @@
+version: v3
+services:
+  express:
+    image: react-app
+    build:
+      context: .
+      dockerfile: Dockerfile-node
+    container_name: express.v1
+    ports:
+      - "3001:3000"
+  express2:
+    image: multi-stage
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: express2.v2
+    ports:
+      - "3002:3000"
+    depends_on:
+      - express
